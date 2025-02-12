@@ -27,11 +27,15 @@ final class AddRoomController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
+        $type = $data['type'];
         $text = $data['text'];
         $price = $data['price'];
 
         $room = new Room();
 
+        if ($type) {
+            $room->setType($type);
+        }
         if ($text) {
             $room->setText($text);
         }
