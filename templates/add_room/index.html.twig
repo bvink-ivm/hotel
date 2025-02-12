@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% set imgUrl = "img/hero.jpg" %}
+{% set titlePage = "Hotel De Zonne Vallei" %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+    {% for room in rooms %}
+        <div>
+            <p>{{ room.text }}</p>
+            {% if room.price %}
+                <p>€ {{ room.price }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <input type="text" name="roomText" id="roomText">
+    <input type="text" name="priceText" id="priceText">
+    <button id="addRoom">Add room</button>
+
+    <script>addPath="{{path('add_room')}}"</script>
+    <script src="{{asset('javascript/add_room.js')}}"></script>
+
+{% endblock %}
