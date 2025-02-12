@@ -1,3 +1,45 @@
 body {
-    background-color: skyblue;
+    background-color: #e4e4e4;
+}
+section{
+    margin: 20px auto;
+    width:80%;
+    padding: 25px;
+
+}
+h2{
+    font-size:1.5rem;
+    margin-bottom:25px;
+    text-decoration: solid underline #B5925C 2px;
+    text-underline-offset: 5px;
+}
+section p{
+    font-size:1.2rem;
+    margin-bottom:10px;
+    line-height: 1.5;
+}
+article{
+    width:60%;
+    border: 1px solid #B5925C;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 25px;
+    
+}
+.flexContainer { 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    
+}
+.reverse {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+.reverse p {
+    text-align: left;
+}
+.contentImg {
+    width: 35%;
+    border-radius: 5px;
 }

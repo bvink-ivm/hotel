@@ -1,39 +1,151 @@
 {% extends "base.html.twig" %}
 
 {% set imgUrl = "img/hero.jpg" %}
-{% set titlePage = "Hotel De Zonne Vallei" %}
+{% set titlePage = "Ons Restaurant" %}
 
 {% block body %}
-    <section style="text-align: right;"> 
-        <h2>Welkom bij Hotel De Zonne Vallei</h2>
-        <p>Ontsnap aan de dagelijkse drukte en ontdek de rust en luxe van Hotel De Zonne Vallei, een 3-duimen hotel gelegen in het hart van Alkmaar. Ons hotel biedt een perfecte mix van comfort, gastvrijheid en adembenemende natuur. Of u nu voor een romantisch uitje, een familievakantie of een zakelijke bijeenkomst komt, ons hotel heeft precies wat u nodig heeft voor een onvergetelijk verblijf.</p>
+    <section class="flexContainer">
+        <img class="contentImg" src="{{ asset('img/contentFoto.jpg')}}" alt="">
+        <article>
+            <h2>Welkom in Ons Restaurant</h2>
+            <p>Bij Hotel De Zonne Vallei zijn we trots op ons wereldberoemde restaurant, waar culinaire dromen werkelijkheid worden. Onze 2-duimen chef-kok, bekend om zijn creativiteit en vakmanschap, brengt zijn passie voor koken tot leven in elk gerecht. Met jarenlange ervaring in gerenommeerde keukens over de hele wereld, zorgt onze chef voor een onvergetelijke eetervaring die zowel traditionele als moderne smaken combineert.</p>
+        </article>
     </section>
 
-    <section>
-        <h2 style="text-align: left;">Ontdek Onze Kamers</h2>
-        <p>Of u nu op zoek bent naar een romantisch uitje, een familievakantie of een zakelijke bijeenkomst, onze stijlvolle en goed uitgeruste kamers bieden alles wat u nodig heeft voor een onvergetelijk verblijf. Geniet van moderne voorzieningen, comfortabele bedden en een prachtig uitzicht op de omgeving.</p>
+<section class="menu-section">
+        <h2>Voorgerechten</h2>
+        <table class="menu-table">
+            <tr>
+                <td>Geroosterde Bietensalade</td>
+                <td>Met geitenkaas, walnoten en een honing-balsamico dressing.</td>
+            </tr>
+            <tr>
+                <td>Carpaccio van Rundvlees</td>
+                <td>Met truffelmayonaise, rucola en Parmezaanse kaas.</td>
+            </tr>
+            <tr>
+                <td>Gerookte Zalm</td>
+                <td>Met dillecrème, kappertjes en een citroenpartje.</td>
+            </tr>
+            <tr>
+                <td>Ravioli met Spinazie en Ricotta</td>
+                <td>In een romige tomatensaus met basilicum.</td>
+            </tr>
+            <tr>
+                <td>Gegratineerde Champignons</td>
+                <td>Gevuld met knoflook en kruiden, geserveerd met knapperig brood.</td>
+            </tr>
+        </table>
     </section>
 
-    <section>
-        <h2 style="text-align: right;">Culinaire Verwennerij</h2>
-        <p>Laat uw smaakpapillen prikkelen in ons restaurant, waar onze chef-kok met passie lokale ingrediënten omtovert tot culinaire meesterwerken. Van een uitgebreid ontbijt tot een intiem diner, elke maaltijd is een ervaring op zich. Ontdek ons menu en geniet van de smaken van Alkmaar.</p>
+    <section class="menu-section">
+        <h2>Hoofdgerechten</h2>
+        <table class="menu-table">
+            <tr>
+                <td>Gegrilde Zalmfilet</td>
+                <td>Met een citroen-dille saus, geserveerd met seizoensgroenten en aardappelpuree.</td>
+            </tr>
+            <tr>
+                <td>Ribeye Steak</td>
+                <td>Geserveerd met een pepersaus, gegrilde groenten en frietjes.</td>
+            </tr>
+            <tr>
+                <td>Kipfilet Supreme</td>
+                <td>Met een champignonroomsaus, gestoofde worteltjes en aardappelgratin.</td>
+            </tr>
+            <tr>
+                <td>Vegetarische Lasagne</td>
+                <td>Laagjes pasta, seizoensgroenten, ricotta en tomatensaus, geserveerd met een frisse salade.</td>
+            </tr>
+            <tr>
+                <td>Gebakken Zeebaars</td>
+                <td>Op een bedje van spinazie, geserveerd met rijst en een beurre blanc saus.</td>
+            </tr>
+        </table>
     </section>
 
-    <section>
-        <h2 style="text-align: left;">Ontdek de Omgeving</h2>
-        <p>Hotel De Zonne Vallei ligt in het bruisende hart van Alkmaar, een stad die rijk is aan geschiedenis en cultuur. Verken de pittoreske straatjes, bewonder de eeuwenoude architectuur en bezoek de wereldberoemde kaasmarkt. Of u nu winkelt in de boetiekjes, geniet van een drankje op een van de vele terrassen of een ontspannen wandeling maakt langs de grachten, Alkmaar biedt voor ieder wat wils. Ontdek de schoonheid en charme van deze historische stad tijdens uw verblijf in ons hotel.</p>
+    <section class="menu-section">
+        <h2>Nagerechten</h2>
+        <table class="menu-table">
+            <tr>
+                <td>Tiramisu</td>
+                <td>Klassieke Italiaanse dessert met lagen van koffie-geweekte koekjes en mascarpone crème.</td>
+            </tr>
+            <tr>
+                <td>Crème Brûlée</td>
+                <td>Rijke vanille custard met een knapperige gekarameliseerde suikerlaag.</td>
+            </tr>
+            <tr>
+                <td>Chocolade Fondant</td>
+                <td>Warme chocoladetaart met een vloeibare kern, geserveerd met vanille-ijs.</td>
+            </tr>
+            <tr>
+                <td>Lemon Cheesecake</td>
+                <td>Romige cheesecake met een vleugje citroen en een graham cracker korst.</td>
+            </tr>
+            <tr>
+                <td>Vers Fruit met Sorbet</td>
+                <td>Een selectie van seizoensfruit, geserveerd met verfrissende sorbet.</td>
+            </tr>
+        </table>
     </section>
 
-
+    <section class="menu-section">
+        <h2>Kinder Menu's</h2>
+        <table class="menu-table">
+            <tr>
+                <td>Mini Burger</td>
+                <td>Met kaas en frietjes.</td>
+            </tr>
+            <tr>
+                <td>Kipnuggets</td>
+                <td>Geserveerd met appelmoes en een klein salade.</td>
+            </tr>
+            <tr>
+                <td>Spaghetti Bolognese</td>
+                <td>Met huisgemaakte tomatensaus.</td>
+            </tr>
+            <tr>
+                <td>Pannenkoeken</td>
+                <td>Met stroop en poedersuiker.</td>
+            </tr>
+            <tr>
+                <td>Fish and Chips</td>
+                <td>Gebakken vis met frietjes en een beetje ketchup.</td>
+            </tr>
+        </table>
+    </section>
     <style>
-    section{
-        margin: 20px auto;
-        width:80%;
-        padding: 25px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
-    
+    .menu-section {
+    margin: 20px auto;
+    width:80%;
+    padding: 25px;
+    border: 1px solid #B5925C;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.menu-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.menu-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.menu-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-table td:first-child {
+    font-weight: bold;
+    color: #B5925C;
+}
     </style>
 {% endblock %}
