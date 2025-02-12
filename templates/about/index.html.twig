@@ -4,36 +4,41 @@
 {% set titlePage = "Hotel De Zonne Vallei" %}
 
 {% block body %}
-    <section style="text-align: right;"> 
-        <h2>Welkom bij Hotel De Zonne Vallei</h2>
-        <p>Ontsnap aan de dagelijkse drukte en ontdek de rust en luxe van Hotel De Zonne Vallei, een 3-duimen hotel gelegen in het hart van Alkmaar. Ons hotel biedt een perfecte mix van comfort, gastvrijheid en adembenemende natuur. Of u nu voor een romantisch uitje, een familievakantie of een zakelijke bijeenkomst komt, ons hotel heeft precies wat u nodig heeft voor een onvergetelijk verblijf.</p>
+    <section class="flexContainer">
+        <img class="contentImg" src="{{ asset('img/contentFoto.jpg')}}" alt="">
+        <article>
+            <h2>Welkom bij Hotel De Zonne Vallei</h2>
+            <p>Bij Hotel De Zonne Vallei streven we ernaar om elke gast een onvergetelijke ervaring te bieden, doordrenkt met luxe, comfort en uitzonderlijke gastvrijheid. Gelegen in het hart van Alkmaar, biedt ons hotel de perfecte uitvalsbasis om deze historische en charmante stad te ontdekken.</p>
+        </article>
     </section>
 
-    <section>
-        <h2 style="text-align: left;">Ontdek Onze Kamers</h2>
-        <p>Of u nu op zoek bent naar een romantisch uitje, een familievakantie of een zakelijke bijeenkomst, onze stijlvolle en goed uitgeruste kamers bieden alles wat u nodig heeft voor een onvergetelijk verblijf. Geniet van moderne voorzieningen, comfortabele bedden en een prachtig uitzicht op de omgeving.</p>
+    <section class="flexContainer reverse">
+        <img class="contentImg" src="{{ asset('img/contentFoto.jpg')}}" alt="">
+        <article>
+            <h2> Ons Verhaal</h2>
+            <p>Hotel De Zonne Vallei is opgericht door Bouke van Zon, een visionaire ondernemer met een passie voor gastvrijheid en een scherp oog voor detail. Met jarenlange ervaring in de horeca-industrie heeft Bouke zijn droom verwezenlijkt om een uniek hotel te creëren waar gasten zich thuis voelen en kunnen genieten van alle gemakken en luxe die het leven te bieden heeft.</p>
+        </article>
     </section>
 
-    <section>
-        <h2 style="text-align: right;">Culinaire Verwennerij</h2>
-        <p>Laat uw smaakpapillen prikkelen in ons restaurant, waar onze chef-kok met passie lokale ingrediënten omtovert tot culinaire meesterwerken. Van een uitgebreid ontbijt tot een intiem diner, elke maaltijd is een ervaring op zich. Ontdek ons menu en geniet van de smaken van Alkmaar.</p>
+    <section class="flexContainer">
+        <img class="contentImg" src="{{ asset('img/contentFoto.jpg')}}" alt="">
+        <article>
+            <h2> Onze Waardes</h2>
+            <p>Bij Hotel De Zonne Vallei staan kwaliteit, gastvrijheid en persoonlijke service centraal. Wij geloven dat elk detail bijdraagt aan een perfecte ervaring, van de smaakvolle inrichting van onze kamers tot de culinaire hoogstandjes in ons restaurant. Ons toegewijde team staat altijd klaar om aan al uw wensen te voldoen en ervoor te zorgen dat uw verblijf zo aangenaam mogelijk is.</p>
+        </article>
     </section>
 
-    <section>
-        <h2 style="text-align: left;">Ontdek de Omgeving</h2>
-        <p>Hotel De Zonne Vallei ligt in het bruisende hart van Alkmaar, een stad die rijk is aan geschiedenis en cultuur. Verken de pittoreske straatjes, bewonder de eeuwenoude architectuur en bezoek de wereldberoemde kaasmarkt. Of u nu winkelt in de boetiekjes, geniet van een drankje op een van de vele terrassen of een ontspannen wandeling maakt langs de grachten, Alkmaar biedt voor ieder wat wils. Ontdek de schoonheid en charme van deze historische stad tijdens uw verblijf in ons hotel.</p>
+    <section class="flexContainer reverse">
+        <img class="contentImg" src="{{ asset('img/contentFoto.jpg')}}" alt="">
+        <article>
+            <h2 > Ons Team</h2>
+            <p>Ons team van enthousiaste en professionele medewerkers deelt de visie van Bouke van Zon om elke gast een warm welkom en een onvergetelijk verblijf te bieden. Van de receptie tot het restaurant en de huishouding, elk teamlid speelt een cruciale rol in het creëren van de unieke sfeer en ervaring waar Hotel De Zonne Vallei om bekend staat.</p>
+        </article>
     </section>
 
 
     <style>
-    section{
-        margin: 20px auto;
-        width:80%;
-        padding: 25px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-    }
+
     
     </style>
 {% endblock %}
