@@ -6,6 +6,7 @@
 			{% block title %}Welcome!
 			{% endblock %}
 		</title>
+		<link rel="stylesheet" href="{{ asset('styles/reset.css') }}">
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}
 
 		{% block javascripts %}
@@ -15,33 +16,77 @@
 		{% endblock %}
 	</head>
 	<body>
-	<style>
-	* {
-		box-sizing: border-box;
-		margin:0;
-		padding:0;
-	}
-	nav{
-		display: flex;
-		justify-content: space-around;
-		background-color: #B5925C;
-		padding: 10px;
-	}
-	nav a {
-		color: white;
-		font-size:1.2rem;
-		text-decoration: none;
-	}
-	</style>
+		<style>
+
+			nav {
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				background-color: #B5925C;
+				padding: 10px;
+			}
+			nav a {
+				color: white;
+				font-size: 1.2rem;
+				text-decoration: none;
+			}
+			.heroImg {
+				width: 100%;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.siteLogo {
+				width: 150px;
+			}
+			.heroContainer {
+				position: relative;
+				/* other styles */
+			}
+
+			.heroContainer .overlay {
+				position: absolute;
+				bottom: 0.5%;
+				left: 0;
+				width: 100%;
+				height: 90%;
+				background: linear-gradient(to top, rgba(83, 83, 83, 0.5), transparent); /* or rgba(209, 209, 209, 0.5) */
+				z-index: 1;
+			}
+
+			.heroContainer h1 {
+				position: absolute;
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-end;
+				width:100%;
+				left:-5%;
+				bottom: 6%;
+				color:#F9F58B;
+				font-weight: 600;
+				font-size:3rem;
+				z-index: 2;
+				text-shadow: 2px 2px 4px #B5925C; /* Adding text shadow */
+				/* other styles */
+			}
+		</style>
 		<header>
 			<nav>
-				<a href="#">Home</a>
-				<a href="#">Kamers</a>
-				<a href="#">Restaurant</a>
-				<a href="#">Omgeving</a>
+				<a href="{{path('home')}}">
+					<img class="siteLogo" src="{{ asset('img/logo.png')}}" alt="">
+				</a>
+				<a href="{{path('room')}}">Kamers</a>
+				<a href="{{path('restaurant')}}">Restaurant</a>
+				<a href="{{path('about')}}">Over ons</a>
+				<a href="{{path('contact')}}">Contact</a>
 			</nav>
-            {# <img src="{{imgUrl}}" alt=""> #}
-            {# <h1 style="font-size:3rem; margin:0 auto; width:100%; text-align:center; color:#B5925C;">{{titlePage}}</h1> #}
+
+
+			<div class="heroContainer">
+				<div class="overlay"></div>
+				<img class='heroImg' src="{{ asset(imgUrl)}}" alt="">
+				<h1>{{titlePage}}</h1>
+			</div>
+
 		</header>
 		<main>
 			{% block body %}{% endblock %}
