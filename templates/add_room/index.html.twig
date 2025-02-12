@@ -14,6 +14,9 @@
             {% if room.price %}
                 <p>€ {{ room.price }}</p>
             {% endif %}
+            {% if room.photo %}
+                <img src="{{ asset('uploads/photos/' ~ room.photo) }}" alt="Room photo">
+            {% endif %}
         </div>
     {% endfor %}
     <label for="typeText">Type: </label>
@@ -22,6 +25,8 @@
     <input type="text" name="roomText" id="roomText">
     <label for="priceText">Prijs: </label>
     <input type="text" name="priceText" id="priceText">
+    <label for="photoFile">Photo: </label>
+    <input type="file" name="photoFile" id="photoFile">
     <button id="addRoom">Add room</button>
 
     <script>addPath="{{path('add_room')}}"</script>
