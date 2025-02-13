@@ -1,4 +1,4 @@
-const apiKey = "92c5096938361975b00dae1d0b397832";
+const apiKey = window.API_KEY;
 const city = "Alkmaar";
 const units = "metric";
 const lang = "nl";	
@@ -45,7 +45,6 @@ async function getWeather() {
         const windBeaufort = mpsToBeaufort(windSpeed);
         const windDirection = data.wind.deg;
         const windDirectionText = degToCompass(windDirection);
-        console.log("Weather data:", data);
 
         document.getElementById("weatherText").innerText = `${weather}`
         document.getElementById("tempText").innerText= `${temp}`
