@@ -1,10 +1,3 @@
-const apiKey = window.API_KEY;
-const city = "Alkmaar";
-const units = "metric";
-const lang = "nl";	
-const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}&lang=${lang}`;
-
-
 function mpsToBeaufort(speedMS) {
     if (speedMS < 0.3) return 0;
     if (speedMS < 1.6) return 1;
@@ -32,6 +25,12 @@ function degToCompass(degrees) {
 }
 
 async function getWeather() {
+    let apiKey = window.API_KEY;
+    let city = "Alkmaar";
+    let units = "metric";
+    let lang = "nl";	
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}&lang=${lang}`;
+
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -56,4 +55,4 @@ async function getWeather() {
     }
 }
 
-getWeather();
+document.addEventListener("DOMContentLoaded", getWeather());
