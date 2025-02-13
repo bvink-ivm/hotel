@@ -112,4 +112,30 @@ final class AddRoomController extends AbstractController
 
         return new JsonResponse(['status' => 'Room updated!']);
     }
+
+    #[Route('/admin/room/delete', name: 'delete_room')]
+    public function deleteRoom(EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+        $id = $data['id'];
+
+        $room = $em->getRepository(Room::class)->find($id);
+
+        if ($room) {
+            // Remove the photo if it exists
+            if ($room->getPhoto()) {
+                $photoPath = $this->getParameter('photos_directory') . '/' . $room->getPhoto();
+                if (file_exists($photoPath)) {
+                    unlink($photoPath);
+                }
+            }
+
+            $em->remove($room);
+            $em->flush();
+
+            return new JsonResponse(['status' => 'Room deleted!']);
+        } else {
+            return new JsonResponse(['status' => 'Room not found!'], 404);
+        }
+    }
 }
