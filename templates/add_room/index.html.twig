@@ -6,25 +6,6 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
-    <section>
-    {% for room in rooms %}
-        <article>
-            <div class="buttons">
-                <button class="editButton" data-id="{{room.id}}" data-type="{{room.type}}" data-text="{{room.text}}" data-price="{{room.price}}">Bewerken</button>
-                <button class="deleteButton" data-id="{{room.id}}">Verwijderen</button>
-            </div>
-            <h3>{{ room.type}}</h3>
-            {% if room.photo %}
-                <img src="{{ asset('uploads/photos/' ~ room.photo) }}" alt="Room photo" class= "roomPhoto">
-            {% endif %}
-            <p>{{ room.text }}</p>
-            {% if room.price %}
-                <p>€ {{ room.price }}</p>
-            {% endif %}
-            
-        </article>
-    {% endfor %}
-    </section>
     <section id="createRoomForm">
         <article class="roomForm">
             <label for="typeText">Type: </label>
@@ -50,6 +31,28 @@
             <input type="file" name="photoFile" id="editPhotoFile">
             <button id="editSubmitRoom">Edit room</button>
         </article>
+    </section>
+
+    <section>
+    {% for room in rooms %}
+        <section class="flexContainer">
+            <article>
+                <div class="buttons">
+                    <button class="editButton" data-id="{{room.id}}" data-type="{{room.type}}" data-text="{{room.text}}" data-price="{{room.price}}">Bewerken</button>
+                    <button class="deleteButton" data-id="{{room.id}}">Verwijderen</button>
+                </div>
+                <h3>{{ room.type}}</h3>
+                
+                <p>{{ room.text }}</p>
+                {% if room.price %}
+                    <p>€ {{ room.price }}</p>
+                {% endif %}
+            </article>
+            {% if room.photo %}
+                <img src="{{ asset('uploads/photos/' ~ room.photo) }}" alt="Room photo" class= "contentImg">
+            {% endif %}
+        </section>
+    {% endfor %}
     </section>
 
     <script>
