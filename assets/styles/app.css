@@ -85,9 +85,8 @@ article{
     cursor: pointer;
 }
 
-.editRoomForm{
+#editRoomForm{
     display: none;
-    flex-direction: column;
 }
 
 .editButton{
