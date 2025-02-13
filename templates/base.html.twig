@@ -95,12 +95,18 @@
 			{% block body %}{% endblock %}
 		</main>
 		<footer>
+			<div id="weather">
+				<p>Het weer in Alkmaar is: <span id="weatherText"></span></p>
+				<p>De temperatuur is: <span id="tempText"></span>°C, met een gevoels temperatuur van <span id="feelsLikeText"></span>°C</p>
+				<p>En een windkracht van <span id="windSpeedText"></span> uit het <span id="windDirectionText"></span></p>
+			</div>
 			{% if is_granted('ROLE_USER') %}
 				<a href="{{path('logout')}}">Uitloggen</a>
 			{% else %}
 				<a href="{{path('app_login')}}">.</a>
 			{% endif %}
-
+			
 		</footer>
+		<script src="{{asset('javascript/get_weather.js')}}"></script>
 	</body>
 </html>
