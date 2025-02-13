@@ -61,4 +61,55 @@ final class AddRoomController extends AbstractController
 
         return new JsonResponse(['status' => 'Room added!']);
     }
+
+    #[Route('/admin/room/edit', name: 'edit_room')]
+    public function editRoom(EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        $id = $request->request->get('id');
+        $type = $request->request->get('type');
+        $text = $request->request->get('text');
+        $price = $request->request->get('price');
+        $photo = $request->files->get('photo');
+
+        $room = $em->getRepository(Room::class)->find($id);
+
+        if ($room) {
+            if ($type) {
+                $room->setType($type);
+            }
+            if ($text) {
+                $room->setText($text);
+            }
+            if ($price) {
+                $room->setPrice($price);
+            }
+            if ($photo instanceof UploadedFile) {
+                // Remove the old photo if it exists
+                if ($room->getPhoto()) {
+                    $oldPhotoPath = $this->getParameter('photos_directory') . '/' . $room->getPhoto();
+                    if (file_exists($oldPhotoPath)) {
+                        unlink($oldPhotoPath);
+                    }
+                }
+
+                $newFilename = uniqid().'.'.$photo->guessExtension();
+                try {
+                    $photo->move(
+                        $this->getParameter('photos_directory'),
+                        $newFilename
+                    );
+                    $room->setPhoto($newFilename);
+                } catch (FileException $e) {
+                    return new JsonResponse(['status' => 'Photo upload failed!'], 500);
+                }
+            }
+        } else {
+            return new JsonResponse(['status' => 'Room not found!'], 404);
+        }
+
+        $em->persist($room);
+        $em->flush();
+
+        return new JsonResponse(['status' => 'Room updated!']);
+    }
 }
