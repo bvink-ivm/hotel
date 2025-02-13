@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Room;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 final class AddRoomController extends AbstractController
 {
@@ -25,11 +27,10 @@ final class AddRoomController extends AbstractController
     #[Route('/admin/room/add', name: 'add_room')]
     public function addRoom(EntityManagerInterface $em, Request $request): JsonResponse
     {
-        $data = json_decode($request->getContent(), true);
-
-        $type = $data['type'];
-        $text = $data['text'];
-        $price = $data['price'];
+        $type = $request->request->get('type');
+        $text = $request->request->get('text');
+        $price = $request->request->get('price');
+        $photo = $request->files->get('photo');
 
         $room = new Room();
 
@@ -42,6 +43,18 @@ final class AddRoomController extends AbstractController
         if ($price) {
             $room->setPrice($price);
         }
+        if ($photo instanceof UploadedFile) {
+            $newFilename = uniqid().'.'.$photo->guessExtension();
+            try {
+                $photo->move(
+                    $this->getParameter('photos_directory'),
+                    $newFilename
+                );
+                $room->setPhoto($newFilename);
+            } catch (FileException $e) {
+                return new JsonResponse(['status' => 'Photo upload failed!'], 500);
+            }
+        }
 
         $em->persist($room);
         $em->flush();
@@ -49,4 +62,54 @@ final class AddRoomController extends AbstractController
         return new JsonResponse(['status' => 'Room added!']);
     }
 
+    #[Route('/admin/room/edit', name: 'edit_room')]
+    public function editRoom(EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        $id = $request->request->get('id');
+        $type = $request->request->get('type');
+        $text = $request->request->get('text');
+        $price = $request->request->get('price');
+        $photo = $request->files->get('photo');
+
+        $room = $em->getRepository(Room::class)->find($id);
+
+        if ($room) {
+            if ($type) {
+                $room->setType($type);
+            }
+            if ($text) {
+                $room->setText($text);
+            }
+            if ($price) {
+                $room->setPrice($price);
+            }
+            if ($photo instanceof UploadedFile) {
+                // Remove the old photo if it exists
+                if ($room->getPhoto()) {
+                    $oldPhotoPath = $this->getParameter('photos_directory') . '/' . $room->getPhoto();
+                    if (file_exists($oldPhotoPath)) {
+                        unlink($oldPhotoPath);
+                    }
+                }
+
+                $newFilename = uniqid().'.'.$photo->guessExtension();
+                try {
+                    $photo->move(
+                        $this->getParameter('photos_directory'),
+                        $newFilename
+                    );
+                    $room->setPhoto($newFilename);
+                } catch (FileException $e) {
+                    return new JsonResponse(['status' => 'Photo upload failed!'], 500);
+                }
+            }
+        } else {
+            return new JsonResponse(['status' => 'Room not found!'], 404);
+        }
+
+        $em->persist($room);
+        $em->flush();
+
+        return new JsonResponse(['status' => 'Room updated!']);
+    }
 }

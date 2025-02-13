@@ -43,3 +43,77 @@ article{
     width: 35%;
     border-radius: 5px;
 }
+
+.roomPhoto{
+    width: 30%;
+    height: auto;
+    
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.roomForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.roomForm input{
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B5925C;
+}
+
+.roomForm textarea{
+    width: 50%;
+    height: 3rem;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B5925C;
+}
+
+.roomForm button{
+    width: 50%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B5925C;
+    background-color: #B5925C;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.editRoomForm{
+    display: none;
+    flex-direction: column;
+}
+
+.editButton{
+    width: 10%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B5925C;
+    background-color: #B5925C;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deleteButton{
+    width: 10%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B5925C;
+    background-color: #B5925C;
+    color: #FFFFFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttons{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #B5925C;
+}

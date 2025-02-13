@@ -6,25 +6,57 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
-
+    <section>
     {% for room in rooms %}
-        <div>
+        <article>
+            <div class="buttons">
+                <button class="editButton" data-id="{{room.id}}" data-type="{{room.type}}" data-text="{{room.text}}" data-price="{{room.price}}">Bewerken</button>
+                <button class="deleteButton" data-id="{{room.id}}">Verwijderen</button>
+            </div>
             <h3>{{ room.type}}</h3>
+            {% if room.photo %}
+                <img src="{{ asset('uploads/photos/' ~ room.photo) }}" alt="Room photo" class= "roomPhoto">
+            {% endif %}
             <p>{{ room.text }}</p>
             {% if room.price %}
                 <p>€ {{ room.price }}</p>
             {% endif %}
-        </div>
+            
+        </article>
     {% endfor %}
-    <label for="typeText">Type: </label>
-    <input type="text" name="typeText" id="typeText">
-    <label for="roomText">Omschrijving: </label>
-    <input type="text" name="roomText" id="roomText">
-    <label for="priceText">Prijs: </label>
-    <input type="text" name="priceText" id="priceText">
-    <button id="addRoom">Add room</button>
+    </section>
+    <section id="createRoomForm">
+        <article class="roomForm">
+            <label for="typeText">Type: </label>
+            <input type="text" name="typeText" id="typeText">
+            <label for="roomText">Omschrijving: </label>
+            <textarea name="textText" id="roomText"></textarea>
+            <label for="priceText">Prijs: </label>
+            <input type="text" name="priceText" id="priceText">
+            <label for="photoFile">Photo: </label>
+            <input type="file" name="photoFile" id="photoFile">
+            <button id="addRoom">Add room</button>
+        </article>
+    </section>
+    <section id="editRoomForm">
+        <article class="roomForm">
+            <label for="typeText">Type: </label>
+            <input type="text" name="typeText" id="editTypeText">
+            <label for="roomText">Omschrijving: </label>
+            <textarea name="textText" id="editRoomText"></textarea>
+            <label for="priceText">Prijs: </label>
+            <input type="text" name="priceText" id="editPriceText">
+            <label for="photoFile">Photo: </label>
+            <input type="file" name="photoFile" id="editPhotoFile">
+            <button id="editSubmitRoom">Edit room</button>
+        </article>
+    </section>
 
-    <script>addPath="{{path('add_room')}}"</script>
+    <script>
+        addPath="{{path('add_room')}}"
+        editPath="{{path('edit_room')}}"
+    </script>
     <script src="{{asset('javascript/add_room.js')}}"></script>
+    <script src="{{asset('javascript/edit_room.js')}}"></script>
 
 {% endblock %}
