@@ -75,6 +75,9 @@
 					<img class="siteLogo" src="{{ asset('img/logo.png')}}" alt="">
 				</a>
 				<a href="{{path('room')}}">Kamers</a>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{path('add_room_view')}}" class = "adminLink">Kamers toevoegen</a>
+				{% endif %}
 				<a href="{{path('restaurant')}}">Restaurant</a>
 				<a href="{{path('about')}}">Over ons</a>
 				<a href="{{path('contact')}}">Contact</a>
@@ -91,6 +94,13 @@
 		<main>
 			{% block body %}{% endblock %}
 		</main>
-		<footer></footer>
+		<footer>
+			{% if is_granted('ROLE_USER') %}
+				<a href="{{path('logout')}}">Uitloggen</a>
+			{% else %}
+				<a href="{{path('app_login')}}">.</a>
+			{% endif %}
+
+		</footer>
 	</body>
 </html>
